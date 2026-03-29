@@ -1,0 +1,272 @@
+/* Estilos inspirados na Netflix - Página de Seleção de Perfis */
+
+/* Variáveis CSS - Dark Mode (padrão) */
+:root,
+[data-theme="dark"] {
+  --netflix-red: #e50914;
+  --netflix-black: #000000;
+  --netflix-dark-gray: #141414;
+  --color-bg: linear-gradient(135deg, #141414 0%, #000000 100%);
+  --color-header-bg: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  --color-text: #ffffff;
+  --color-text-secondary: #b3b3b3;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-profile-shadow: rgba(0, 0, 0, 0.3);
+  --netflix-transition: all 0.3s ease;
+  --netflix-font: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Variáveis CSS - Light Mode */
+[data-theme="light"] {
+  --netflix-red: #e50914;
+  --netflix-black: #ffffff;
+  --netflix-dark-gray: #f5f5f5;
+  --color-bg: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+  --color-header-bg: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, transparent 100%);
+  --color-text: #000000;
+  --color-text-secondary: #666666;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-profile-shadow: rgba(0, 0, 0, 0.1);
+  --netflix-transition: all 0.3s ease;
+  --netflix-font: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo */
+body {
+  font-family: var(--netflix-font);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: var(--color-header-bg);
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+}
+
+header .logo {
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--netflix-red);
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+}
+
+/* Botão de toggle */
+.theme-toggle {
+  background: var(--netflix-white);
+  border: none;
+  color: var(--color-text);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+}
+
+.theme-toggle:hover {
+  background: #afeeeb;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(229, 9, 20, 0.5);
+  text-shadow: #000000 0 0 3px;
+}
+
+.theme-toggle:active {
+  transform: scale(0.98);
+}
+
+/* Main */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 120px 20px 40px;
+}
+
+/* Título */
+h1 {
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  transition: color 0.3s ease;
+}
+
+/* Container de perfis */
+.profiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* Perfil */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--netflix-transition);
+}
+
+.profile a {
+  text-decoration: none;
+  color: var(--netflix-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--netflix-transition);
+}
+
+.profile img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 3px solid var(--color-border);
+  box-shadow: 0 4px 20px var(--color-profile-shadow);
+  transition: var(--netflix-transition);
+}
+
+.profile figcaption {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: var(--netflix-transition);
+  color: var(--color-text);
+}
+
+/* Hover */
+.profile a:hover img,
+.profile a:focus img {
+  transform: scale(1.05);
+  border-color: var(--netflix-red);
+  box-shadow: 0 8px 30px rgba(229, 9, 20, 0.3), 0 0 20px rgba(229, 9, 20, 0.2);
+}
+
+.profile a:hover figcaption,
+.profile a:focus figcaption {
+  color: var(--netflix-red);
+  transform: scale(1.05);
+}
+
+.profile a:focus {
+  outline: 2px solid var(--netflix-red);
+  outline-offset: 4px;
+}
+
+[data-theme="light"] .profile img {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .profile a:hover img,
+[data-theme="light"] .profile a:focus img {
+  box-shadow: 0 8px 30px rgba(229, 9, 20, 0.4);
+}
+
+[data-theme="light"] header {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95) 0%, transparent 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .profiles {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .profile img {
+    width: 140px;
+    height: 140px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  header .logo {
+    left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profiles {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .profile img {
+    width: 120px;
+    height: 120px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  main {
+    padding: 100px 15px 20px;
+  }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none;
+  }
+}
+/* gerenciar perfis */
+.gerenciar {
+    margin-top: 50px;
+}
+
+.botao-gerenciar {
+    background: transparent;
+    border: 2px solid grey;
+    border-radius: 15px;
+    color: grey;
+    padding: 10px 30px;
+    font-size: 1vw;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.botao-gerenciar:hover {
+    border-color: #e5e5e5;
+    color: #e5e5e5;
+}
